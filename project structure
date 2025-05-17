@@ -1,0 +1,18 @@
+data-preprocessing-project/
+├── README.md
+├── data/
+│   ├── raw/
+│   └── processed/
+├── notebooks/
+│   ├── data_cleaning.ipynb
+│   ├── feature_engineering.ipynb
+│   └── data_visualization.ipynb
+├── scripts/
+│   ├── data_cleaning.py
+│   ├── feature_engineering.py
+│   └── data_visualization.py
+├── images/
+│   └── visualizations/
+├── presentation/
+│   └── data_preprocessing_presentation.pdf
+└── requirements.txt
