@@ -1,0 +1,13 @@
+# 📉 Step 3: Outlier Detection and Handling
+
+# Boxplot for GPA
+plt.figure(figsize=(6, 4))
+sns.boxplot(x=df['GPA'])
+plt.title('GPA Outliers')
+plt.show()
+
+# Optional: Remove outliers using IQR
+Q1 = df['GPA'].quantile(0.25)
+Q3 = df['GPA'].quantile(0.75)
+IQR = Q3 - Q1
+df = df[~((df['GPA'] < (Q1 - 1.5 * IQR)) | (df['GPA'] > (Q3 + 1.5 * IQR)))]
