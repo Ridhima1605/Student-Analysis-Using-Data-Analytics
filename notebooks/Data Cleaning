@@ -1,0 +1,17 @@
+# 🧹 Step 1: Data Cleaning
+
+# Checking for missing values
+print("Missing Values:\n", df.isnull().sum())
+
+# Handling missing values
+df['Attendance'] = df['Attendance'].fillna(df['Attendance'].mean())
+df['StudyHours'] = df['StudyHours'].fillna(df['StudyHours'].median())
+df['GPA'] = df['GPA'].fillna(df['GPA'].mean())
+
+# Removing duplicates
+df.drop_duplicates(inplace=True)
+
+# Fixing inconsistent labels (example)
+df['Gender'] = df['Gender'].str.lower().replace({'f': 'female', 'm': 'male'})
+
+df.head()
