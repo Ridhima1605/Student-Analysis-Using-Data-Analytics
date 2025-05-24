@@ -1,0 +1,2 @@
+# 📊 Step 2: Summary Statistics
+df.describe()
