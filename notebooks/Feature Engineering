@@ -1,0 +1,11 @@
+# 🛠️ Step 4: Feature Engineering
+
+# Creating new feature: Performance Category
+df['Performance'] = pd.cut(df['GPA'],
+                           bins=[0, 2.5, 3.5, 4.0],
+                           labels=['Low', 'Medium', 'High'])
+
+# Encoding categorical variable
+df['Gender_encoded'] = df['Gender'].map({'male': 0, 'female': 1})
+
+df[['GPA', 'Performance', 'Gender', 'Gender_encoded']].head()
