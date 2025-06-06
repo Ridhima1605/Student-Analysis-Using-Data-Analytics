@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Average Grades Bar Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Average Grades by Subject</h2>
+  <canvas id="myBarChart" width="600" height="400"></canvas>
+
+  <script>
+    // Sample data (can be linked to CSV or JSON in advanced setups)
+    const subjects = ['Math', 'Science', 'English', 'History', 'Art'];
+    const averageGrades = [78, 85, 82, 75, 90];
+
+    const ctx = document.getElementById('myBarChart').getContext('2d');
+    const myBarChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: subjects,
+        datasets: [{
+          label: 'Average Grade (%)',
+          data: averageGrades,
+          backgroundColor: [
+            '#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f'
+          ],
+          borderColor: '#333',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: {
+              display: true,
+              text: 'Grade Percentage'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Subjects'
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Average Grades of Students by Subject',
+            font: {
+              size: 18,
+              weight: 'bold'
+            }
+          },
+          legend: {
+            display: true,
+            position: 'top'
+          },
+          tooltip: {
+            enabled: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
