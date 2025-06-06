@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Analysis Visualization</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .chart-container {
+      margin: 40px 0;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    canvas {
+      max-width: 100%;
+      height: 400px !important;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Data Analytics Visualization</h1>
+  <p style="text-align:center;">Multiple visualizations to explore student academic performance and attendance.</p>
+
+  <!-- Bar Chart -->
+  <div class="chart-container">
+    <h2>Average Grades by Subject</h2>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <!-- Pie Chart -->
+  <div class="chart-container">
+    <h2>Attendance Distribution</h2>
+    <canvas id="pieChart"></canvas>
+  </div>
+
+  <!-- Scatter Plot -->
+  <div class="chart-container">
+    <h2>Grades vs. Attendance Scatter Plot</h2>
+    <canvas id="scatterChart"></canvas>
+  </div>
+
+  <script>
+    // Embedded dataset
+    const data = {
+      subjects: ['Math', 'Science', 'English', 'History', 'Art'],
+      avgGrades: [78, 85, 82, 75, 90], // % grades
+      attendanceDistribution: {
+        Present: 320,
+        Absent: 30,
+        Late: 15
+      },
+      studentRecords: [
+        // Each record: {grade: %, attendance %}
+        { grade: 78, attendance: 92 },
+        { grade: 85, attendance: 95 },
+        { grade: 82, attendance: 88 },
+        { grade: 75, attendance: 85 },
+        { grade: 90, attendance: 98 },
+        { grade: 68, attendance: 80 },
+        { grade: 88, attendance: 96 },
+        { grade: 70, attendance: 70 },
+        { grade: 95, attendance: 99 },
+        { grade: 60, attendance: 75 }
+      ]
+    };
+
+    // === Bar Chart: Average Grades by Subject ===
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: data.subjects,
+        datasets: [{
+          label: 'Average Grade (%)',
+          data: data.avgGrades,
+          backgroundColor: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f'],
+          borderColor: '#2c3e50',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: {
+              display: true,
+              text: 'Grade Percentage'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Subjects'
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Average Grades of Students by Subject',
+            font: { size: 18, weight: 'bold' }
+          },
+          legend: {
+            display: true,
+            position: 'top'
+          },
+          tooltip: {
+            enabled: true
+          }
+        }
+      }
+    });
+
+    // === Pie Chart: Attendance Distribution ===
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: Object.keys(data.attendanceDistribution),
+        datasets: [{
+          data: Object.values(data.attendanceDistribution),
+          backgroundColor: ['#4e79a7', '#e15759', '#f28e2b'],
+          borderColor: '#fff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Student Attendance Status Distribution',
+            font: { size: 18, weight: 'bold' }
+          },
+          legend: {
+            position: 'right',
+            labels: {
+              boxWidth: 20,
+              padding: 15
+            }
+          },
+          tooltip: {
+            enabled: true,
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = context.parsed || 0;
+                const total = context.chart._metasets[context.datasetIndex].total;
+                const percentage = ((value / total) * 100).toFixed(1);
+                return `${label}: ${value} (${percentage}%)`;
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // === Scatter Plot: Grades vs Attendance ===
+    const scatterCtx = document.getElementById('scatterChart').getContext('2d');
+    const scatterData = data.studentRecords.map(record => ({x: record.attendance, y: record.grade}));
+    const scatterChart = new Chart(scatterCtx, {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          label: 'Student',
+          data: scatterData,
+          backgroundColor: '#59a14f',
+          pointRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            type: 'linear',
+            position: 'bottom',
+            min: 60,
+            max: 100,
+            title: {
+              display: true,
+              text: 'Attendance Percentage'
+            }
+          },
+          y: {
+            min: 50,
+            max: 100,
+            title: {
+              display: true,
+              text: 'Grade Percentage'
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Correlation between Grades and Attendance',
+            font: { size: 18, weight: 'bold' }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => `Attendance: ${ctx.parsed.x}%, Grade: ${ctx.parsed.y}%`
+            }
+          },
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
