@@ -100,42 +100,88 @@ Gender distribution is relatively balanced.
 
 Study hours have a positive impact on student GPA.
 
-election of Appropriate Chart Types for Insights
-Choosing the right chart type is essential to effectively communicate the insights derived from student data. Each type of insight calls for a specific visualization that best highlights the underlying patterns, comparisons, or relationships.
 
-1. Comparing Categories: Bar Chart
-To compare average grades across different subjects, a Bar Chart is used. This chart type clearly displays the performance in each subject side-by-side, making it easy to identify strong and weak areas.
+# 📊 Student Analysis - Data Visualization Project
 
-2. Showing Proportions: Pie Chart
-The Pie Chart is ideal for visualizing attendance distribution — showing what portion of the total attendance falls under Present, Absent, or Late categories. This gives a quick overview of attendance status proportions.
+![License](https://img.shields.io/badge/Status-Completed-brightgreen)  
+🎓 A visually interactive dashboard showcasing student performance, attendance, and study behavior using **Chart.js**. This project emphasizes **clarity, insight**, and **data storytelling**.
 
-3. Exploring Relationships: Scatter Plot
-To understand the relationship between attendance percentage and student grades, a Scatter Plot is employed. This chart plots individual student data points and reveals trends or correlations, helping to assess if better attendance is associated with higher grades.
+---
 
-4. Other Chart Types (Optional)
-Line Charts could be used to visualize trends over time if attendance or grades are tracked across semesters.
+## 🧠 Project Objectives
 
-Histograms may show the distribution of grades or attendance frequencies to understand data spread.
+- 🔍 Explore patterns in student grades, attendance, and study hours.
+- 📈 Visualize key insights using **bar, pie, and scatter** charts.
+- 🖱️ Provide interactivity to encourage data exploration.
+- 🗣️ Interpret data with storytelling to aid educators & students.
 
-Summary Table
-Insight Type	Chart Type	Purpose
-Comparing categories	Bar Chart	Compare average grades across subjects
-Showing proportions	Pie Chart	Visualize attendance distribution
-Exploring relationships	Scatter Plot	Identify correlation between attendance & grades
-Trends over time	Line Chart	Track changes across semesters (optional)
-Frequency distribution	Histogram	Show data distribution patterns
+---
 
-Selecting appropriate chart types not only improves the clarity and impact of visualizations but also helps stakeholders derive actionable insights from student data effectively.
+## 📁 File Structure
 
-If you want, I can also help you integrate this section neatly into your existing README or presentation slides!
-
+📦 student-analysis
+├── 📊 index.html # Dashboard with all visualizations
+├── 🎨 style.css # Styling for clean visuals
+├── 📊 script.js # Chart.js scripts (with interactivity)
+├── 📄 dataset.csv # Sample dataset used
+├── 📘 README.md # Project overview and usage
+├── 📝 DATA_STORYTELLING.md # Data interpretation and insights
+├── 🧩 INTERACTIVITY.md # Explanation of interactive features
 
 
+---
 
+## 📌 Visualizations Included
 
+### 1️⃣ Average Grades by Subject  
+> 📚 Shows which subjects students perform best in.
 
+![Bar Chart Example](https://raw.githubusercontent.com/Ridhima1605/Student-Analysis-Using-Data-Analytics/main/bar_chart.png)
 
+---
 
+### 2️⃣ Attendance Distribution  
+> 🚦 Helps identify student engagement levels.
+
+![Pie Chart Example](https://raw.githubusercontent.com/Ridhima1605/Student-Analysis-Using-Data-Analytics/main/pie_chart.png)
+
+---
+
+### 3️⃣ Hours Studied vs Scores  
+> ⏳ Visualizes the direct impact of study time on scores.
+
+![Scatter Plot Example](https://raw.githubusercontent.com/Ridhima1605/Student-Analysis-Using-Data-Analytics/main/scatter_plot.png)
+
+---
+
+## 🛠️ Technologies Used
+
+- 📊 **Chart.js** – For interactive charts
+- 🖼️ **HTML/CSS** – For structuring and styling
+- 📁 **CSV Dataset** – Raw data for analysis
+- 🧠 **Markdown** – Documentation and storytelling
+
+---
+
+## 🧭 How to Run Locally
+
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/yourusername/student-analysis.git
+   Open index.html in your browser
+
+2. Open index.html in your browser
+
+3. Hover on charts to explore tooltips
+
+4. View insights in DATA_STORYTELLING.md
+
+🎯 Outcomes & Learning
+✅ Demonstrated the power of visual storytelling
+
+✅ Used chart types wisely for accurate data communication
+
+✅ Created a clear, readable, and interactive UI
 
 Dependencies
 This project requires the following Python libraries:
