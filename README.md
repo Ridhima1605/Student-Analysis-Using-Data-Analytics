@@ -167,7 +167,7 @@ Study hours have a positive impact on student GPA.
 
 1. Clone the repository  
    ```bash
-   git clone https://github.com/yourusername/student-analysis.git
+   git clone https://github.com/Ridhima1605/student-analysis.git
    Open index.html in your browser
 
 2. Open index.html in your browser
